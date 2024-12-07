@@ -460,22 +460,24 @@
         </div>
     </div>
 
-   <script>
-    // Reference table functionality
-    window.showReference = function() {
-        document.getElementById('referenceModal').style.display = 'flex';
-    }
-
-    window.hideReference = function() {
-        document.getElementById('referenceModal').style.display = 'none';
-    }
-
-    // Close modal when clicking outside
-    window.onclick = function(event) {
-        if (event.target.classList.contains('modal')) {
-            hideReference();
+ <script>
+        // Reference table functionality
+        window.showReference = function() {
+            document.getElementById('referenceModal').style.display = 'flex';
         }
-    }
-</script>
 
-<script src="/bridge-scorer/app.js"></script>
+        window.hideReference = function() {
+            document.getElementById('referenceModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                hideReference();
+            }
+        }
+    </script>
+
+    <script src="/bridge-scorer/app.js"></script>
+</body>
+</html>
