@@ -32,40 +32,53 @@
         .header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 20px;
         }
 
         .app-title {
             display: flex;
+            flex-direction: column;
+        }
+
+        .app-title h1 {
+            margin: 0;
+            font-size: 24px;
+            display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .app-title img {
-            width: 32px;
-            height: 32px;
+        .app-title p {
+            margin: 4px 0 0 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 8px;
         }
 
         .deal-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 16px;
             background: var(--secondary-color);
             padding: 16px;
             border-radius: 8px;
             margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             text-align: center;
+            font-weight: 500;
         }
 
         .input-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 16px;
             background: var(--secondary-color);
             padding: 16px;
             border-radius: 8px;
             margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
         }
 
         .input-group {
@@ -76,13 +89,22 @@
 
         .input-group label {
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         select, button {
-            padding: 8px;
+            padding: 8px 12px;
             border: 1px solid var(--border-color);
             border-radius: 4px;
             font-size: 16px;
+            height: 44px;
+        }
+
+        select {
+            width: 100%;
+            background: white;
         }
 
         button {
@@ -97,18 +119,31 @@
             background: #357abd;
         }
 
+        .reference-btn {
+            background: #e3f2fd;
+            color: var(--primary-color);
+        }
+
+        .reference-btn:hover {
+            background: #bbdefb;
+        }
+
         .checkbox-group {
             display: flex;
             gap: 16px;
             align-items: center;
+            margin-top: 8px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            overflow-x: auto;
-            display: block;
+            background: white;
         }
 
         th, td {
@@ -122,9 +157,84 @@
             font-weight: 500;
         }
 
+        .w-narrow {
+            width: 60px;
+        }
+
+        .w-contract {
+            min-width: 140px;
+        }
+
         .delete-btn {
             background: #ff4444;
             padding: 4px 8px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow: auto;
+        }
+
+        .modal-header {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            padding: 16px;
+        }
+
+        .info-icon {
+            cursor: help;
+            color: var(--primary-color);
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .tooltip::after {
+            content: "Enter declaring side's total HCP (20-37)";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px;
+            background: #333;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: nowrap;
+            z-index: 1;
+            display: none;
+        }
+
+        .tooltip:hover::after {
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -132,8 +242,25 @@
                 padding: 8px;
             }
             
+            .header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .button-group {
+                width: 100%;
+            }
+
+            .button-group button {
+                flex: 1;
+            }
+
             .input-container {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
+            }
+
+            select, button {
+                height: 48px;
             }
 
             th, td {
@@ -141,28 +268,21 @@
                 font-size: 14px;
             }
         }
-
-        #installPrompt {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            padding: 16px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            display: none;
-            z-index: 1000;
-        }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="app-title">
-            <img src="/bridge-scorer/icons/icon-72x72.png" alt="Bridge Scorer">
-            <h1>Bridge Scorer</h1>
+            <h1>
+                <img src="/bridge-scorer/icons/icon-72x72.png" alt="Bridge Scorer" width="40" height="40">
+                Bridge Scorer
+            </h1>
+            <p>IMP Scoring with HCP Compensation | 4 Players</p>
         </div>
-        <button id="newGame">New Game</button>
+        <div class="button-group">
+            <button onclick="showReference()" class="reference-btn">Reference</button>
+            <button id="newGame">New Game</button>
+        </div>
     </div>
 
     <div id="dealInfo" class="deal-info"></div>
@@ -223,7 +343,10 @@
         </div>
 
         <div class="input-group">
-            <label for="hcp">HCP</label>
+            <label for="hcp" class="tooltip">
+                HCP
+                <span class="info-icon">ℹ️</span>
+            </label>
             <select id="hcp">
                 <option value="20">20</option>
                 <option value="21">21</option>
@@ -254,19 +377,21 @@
                 <input type="checkbox" id="redouble"> Redoubled
             </label>
         </div>
-        
-        <button class="add-btn">Add Score</button>
+
+        <div class="input-group">
+            <button class="add-btn">Add Score</button>
+        </div>
     </div>
 
-    <div style="overflow-x: auto;">
+    <div class="table-container">
         <table>
             <thead>
                 <tr>
-                    <th>Deal</th>
-                    <th>Contract</th>
-                    <th>Tricks</th>
+                    <th class="w-narrow">No.</th>
+                    <th class="w-contract">Contract</th>
+                    <th>Made</th>
                     <th>Score</th>
-                    <th>HCP</th>
+                    <th class="w-narrow">HCP</th>
                     <th>Comp</th>
                     <th>Net</th>
                     <th>NS</th>
@@ -286,41 +411,48 @@
         </table>
     </div>
 
-    <div id="installPrompt">
-        <p>Install Bridge Scorer for offline use?</p>
-        <button id="installBtn">Install</button>
-        <button id="dismissBtn">Not Now</button>
+    <div id="referenceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Reference Tables</h2>
+                <button onclick="hideReference()" style="font-size: 24px; padding: 0 8px;">×</button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>HCP</th>
+                            <th>Not Vul</th>
+                            <th>Vul</th>
+                            <th>IMPs</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="referenceTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-    <script src="/bridge-scorer/app.js"></script>
     <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/bridge-scorer/service-worker.js')
-                    .then(registration => console.log('ServiceWorker registered'))
-                    .catch(err => console.log('ServiceWorker registration failed:', err));
-            });
+        // Reference table functionality
+        function showReference() {
+            document.getElementById('referenceModal').style.display = 'flex';
         }
 
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            document.getElementById('installPrompt').style.display = 'block';
-        });
+        function hideReference() {
+            document.getElementById('referenceModal').style.display = 'none';
+        }
 
-        document.getElementById('installBtn').addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                deferredPrompt = null;
-                document.getElementById('installPrompt').style.display = 'none';
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                hideReference();
             }
-        });
-
-        document.getElementById('dismissBtn').addEventListener('click', () => {
-            document.getElementById('installPrompt').style.display = 'none';
-        });
+        }
     </script>
+
+    <script src="/bridge-scorer/app.js"></script>
 </body>
 </html>
