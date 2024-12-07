@@ -30,27 +30,32 @@
         }
 
         .header {
+            background: var(--secondary-color);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .header-content {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
+            align-items: center;
+            margin-bottom: 8px;
         }
 
-        .app-title {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .app-title h1 {
-            margin: 0;
-            font-size: 24px;
+        .title-row {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .app-title p {
-            margin: 4px 0 0 0;
+        .title-row h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .subtitle {
+            margin: 4px 0 0 44px;
             color: #666;
             font-size: 14px;
         }
@@ -60,11 +65,15 @@
             gap: 8px;
         }
 
+        .button-group button {
+            min-width: 100px;
+        }
+
         .deal-info {
             background: var(--secondary-color);
-            padding: 16px;
+            padding: 12px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             text-align: center;
@@ -75,16 +84,16 @@
             background: var(--secondary-color);
             padding: 16px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 16px;
         }
 
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
 
         .input-group label {
@@ -92,19 +101,25 @@
             display: flex;
             align-items: center;
             gap: 4px;
+            font-size: 14px;
         }
 
         select, button {
-            padding: 8px 12px;
+            padding: 8px;
             border: 1px solid var(--border-color);
             border-radius: 4px;
             font-size: 16px;
-            height: 44px;
         }
 
         select {
             width: 100%;
             background: white;
+            height: 40px;
+        }
+
+        select#hcp {
+            font-size: 18px;
+            padding: 8px;
         }
 
         button {
@@ -113,10 +128,7 @@
             border: none;
             cursor: pointer;
             transition: background-color 0.2s;
-        }
-
-        button:hover {
-            background: #357abd;
+            height: 40px;
         }
 
         .reference-btn {
@@ -124,50 +136,45 @@
             color: var(--primary-color);
         }
 
-        .reference-btn:hover {
-            background: #bbdefb;
-        }
-
         .checkbox-group {
             display: flex;
-            gap: 16px;
+            gap: 12px;
             align-items: center;
-            margin-top: 8px;
+            margin-top: 4px;
+            font-size: 14px;
         }
 
         .table-container {
             overflow-x: auto;
-            margin-top: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
         }
 
         th, td {
             border: 1px solid var(--border-color);
-            padding: 12px;
+            padding: 8px;
             text-align: center;
+            font-size: 14px;
         }
 
         th {
             background: var(--secondary-color);
             font-weight: 500;
+            white-space: nowrap;
         }
 
         .w-narrow {
-            width: 60px;
+            width: 50px;
         }
 
         .w-contract {
-            min-width: 140px;
-        }
-
-        .delete-btn {
-            background: #ff4444;
-            padding: 4px 8px;
+            min-width: 120px;
         }
 
         .modal {
@@ -187,7 +194,7 @@
         .modal-content {
             background: white;
             border-radius: 8px;
-            max-width: 800px;
+            max-width: 600px;
             width: 100%;
             max-height: 90vh;
             overflow: auto;
@@ -199,51 +206,55 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: var(--secondary-color);
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
         }
 
         .modal-body {
             padding: 16px;
         }
 
+        .reference-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+
+        .reference-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .reference-table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
         .info-icon {
             cursor: help;
             color: var(--primary-color);
-        }
-
-        .tooltip {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .tooltip::after {
-            content: "Enter declaring side's total HCP (20-37)";
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 8px;
-            background: #333;
-            color: white;
-            border-radius: 4px;
-            font-size: 14px;
-            white-space: nowrap;
-            z-index: 1;
-            display: none;
-        }
-
-        .tooltip:hover::after {
-            display: block;
+            font-size: 16px;
         }
 
         @media (max-width: 768px) {
             body {
                 padding: 8px;
             }
-            
+
             .header {
+                padding: 12px;
+            }
+
+            .header-content {
                 flex-direction: column;
+                align-items: flex-start;
                 gap: 12px;
             }
 
@@ -255,33 +266,35 @@
                 flex: 1;
             }
 
+            .subtitle {
+                margin-left: 0;
+            }
+
             .input-container {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                padding: 12px;
             }
 
             select, button {
-                height: 48px;
-            }
-
-            th, td {
-                padding: 8px;
-                font-size: 14px;
+                height: 44px;
             }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="app-title">
-            <h1>
-                <img src="/bridge-scorer/icons/icon-72x72.png" alt="Bridge Scorer" width="40" height="40">
-                Bridge Scorer
-            </h1>
-            <p>IMP Scoring with HCP Compensation | 4 Players</p>
-        </div>
-        <div class="button-group">
-            <button onclick="showReference()" class="reference-btn">Reference</button>
-            <button id="newGame">New Game</button>
+        <div class="header-content">
+            <div>
+                <div class="title-row">
+                    <img src="/bridge-scorer/icons/icon-72x72.png" alt="" width="32" height="32">
+                    <h1>Bridge Scorer</h1>
+                </div>
+                <p class="subtitle">IMP Scoring with HCP Compensation | 4 Players</p>
+            </div>
+            <div class="button-group">
+                <button onclick="showReference()" class="reference-btn">Reference</button>
+                <button id="newGame">New Game</button>
+            </div>
         </div>
     </div>
 
@@ -343,9 +356,9 @@
         </div>
 
         <div class="input-group">
-            <label for="hcp" class="tooltip">
-                HCP
-                <span class="info-icon">ℹ️</span>
+            <label for="hcp">
+                HCP 
+                <span class="info-icon" title="Enter declaring side's total HCP (20-37)">ℹ️</span>
             </label>
             <select id="hcp">
                 <option value="20">20</option>
@@ -369,16 +382,20 @@
             </select>
         </div>
 
-        <div class="checkbox-group">
-            <label>
-                <input type="checkbox" id="double"> Doubled
-            </label>
-            <label>
-                <input type="checkbox" id="redouble"> Redoubled
-            </label>
+        <div class="input-group">
+            <label>Options</label>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" id="double"> X
+                </label>
+                <label>
+                    <input type="checkbox" id="redouble"> XX
+                </label>
+            </div>
         </div>
 
         <div class="input-group">
+            <label>&nbsp;</label>
             <button class="add-btn">Add Score</button>
         </div>
     </div>
@@ -415,10 +432,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Reference Tables</h2>
-                <button onclick="hideReference()" style="font-size: 24px; padding: 0 8px;">×</button>
+                <button onclick="hideReference()" style="font-size: 20px; padding: 4px 8px;">×</button>
             </div>
             <div class="modal-body">
-                <table>
+                <table class="reference-table">
                     <thead>
                         <tr>
                             <th>HCP</th>
@@ -428,31 +445,37 @@
                             <th>Score</th>
                         </tr>
                     </thead>
-                    <tbody id="referenceTableBody">
+                    <tbody>
+                        <tr><td>20</td><td>0</td><td>0</td><td>&lt;20</td><td>0</td></tr>
+                        <tr><td>21</td><td>-50</td><td>-50</td><td>&lt;50</td><td>1</td></tr>
+                        <tr><td>22</td><td>-70</td><td>-70</td><td>&lt;90</td><td>2</td></tr>
+                        <tr><td>23</td><td>-110</td><td>-110</td><td>&lt;130</td><td>3</td></tr>
+                        <tr><td>24</td><td>-200</td><td>-290</td><td>&lt;170</td><td>4</td></tr>
+                        <tr><td>25</td><td>-300</td><td>-440</td><td>&lt;220</td><td>5</td></tr>
+                        <tr><td>26</td><td>-350</td><td>-520</td><td>&lt;270</td><td>6</td></tr>
+                        <tr><td>27+</td><td>etc.</td><td>etc.</td><td>etc.</td><td>etc.</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-    <script>
-        // Reference table functionality
-        function showReference() {
-            document.getElementById('referenceModal').style.display = 'flex';
-        }
+   <script>
+    // Reference table functionality
+    window.showReference = function() {
+        document.getElementById('referenceModal').style.display = 'flex';
+    }
 
-        function hideReference() {
-            document.getElementById('referenceModal').style.display = 'none';
-        }
+    window.hideReference = function() {
+        document.getElementById('referenceModal').style.display = 'none';
+    }
 
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                hideReference();
-            }
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            hideReference();
         }
-    </script>
+    }
+</script>
 
-    <script src="/bridge-scorer/app.js"></script>
-</body>
-</html>
+<script src="/bridge-scorer/app.js"></script>
