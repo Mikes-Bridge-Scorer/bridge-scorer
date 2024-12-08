@@ -80,15 +80,34 @@
             font-weight: 500;
         }
 
-        .input-container {
-            background: var(--secondary-color);
-            padding: 16px;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 16px;
-        }
+      .input-container {
+    background: var(--secondary-color);
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.options-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+.checkbox-group {
+    flex: 1;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 4px;
+    font-size: 14px;
+}
+
+.add-btn {
+    min-width: 120px;
+}
 
         .input-group {
             display: flex;
