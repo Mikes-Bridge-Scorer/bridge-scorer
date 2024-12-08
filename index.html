@@ -178,113 +178,119 @@
         }
 
         .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    z-index: 1000;
-}
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            z-index: 1000;
+        }
 
-.modal-content {
-    background: white;
-    border-radius: 12px;
-    max-width: 600px;
-    width: 100%;
-    max-height: 90vh;
-    overflow: auto;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow: auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
 
-.modal-header {
-    padding: 16px 20px;
-    border-bottom: 1px solid #e5e7eb;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--primary-color);
-    color: white;
-    border-radius: 12px 12px 0 0;
-}
+        .modal-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
 
-.modal-header h2 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 500;
-}
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 500;
+        }
 
-.modal-header button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    padding: 0 8px;
-    cursor: pointer;
-    opacity: 0.8;
-}
+        .modal-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            padding: 0 8px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
 
-.modal-header button:hover {
-    opacity: 1;
-}
+        .modal-body {
+            padding: 20px;
+        }
 
-.modal-body {
-    padding: 20px;
-}
+        .reference-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #e5e7eb;
+        }
 
-.reference-table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #e5e7eb;
-}
+        .reference-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: 500;
+            white-space: nowrap;
+        }
 
-.reference-table th {
-    background: var(--primary-color);
-    color: white;
-    padding: 12px;
-    text-align: center;
-    font-weight: 500;
-    white-space: nowrap;
-}
+        .reference-table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
 
-.reference-table td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #e5e7eb;
-}
+        .reference-table tr:nth-child(even) {
+            background: #f9fafb;
+        }
 
-.reference-table tr:nth-child(even) {
-    background: #f9fafb;
-}
+        .reference-table tr:hover {
+            background: #f3f4f6;
+        }
 
-.reference-table tr:hover {
-    background: #f3f4f6;
-}
+        .confirmation-details {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .modal-content {
-        max-height: 80vh;
-    }
+        .confirmation-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
 
-    .modal-body {
-        padding: 12px;
-    }
+        .confirm-btn {
+            background: #4CAF50;
+        }
 
-    .reference-table th,
-    .reference-table td {
-        padding: 8px;
-        font-size: 14px;
-    }
-}
-        .info-icon {
-            cursor: help;
-            color: var(--primary-color);
-            font-size: 16px;
+        .edit-btn {
+            background: #2196F3;
+        }
+
+        .cancel-btn {
+            background: #f44336;
+        }
+
+        .new-row-highlight {
+            animation: highlightRow 2s ease-out;
+        }
+
+        @keyframes highlightRow {
+            0% { background-color: #e3f2fd; }
+            100% { background-color: transparent; }
         }
 
         @media (max-width: 768px) {
@@ -321,6 +327,20 @@
 
             select, button {
                 height: 44px;
+            }
+
+            .modal-content {
+                max-height: 80vh;
+            }
+
+            .modal-body {
+                padding: 12px;
+            }
+
+            .reference-table th,
+            .reference-table td {
+                padding: 8px;
+                font-size: 14px;
             }
         }
     </style>
@@ -472,11 +492,12 @@
         </table>
     </div>
 
+    <!-- Reference Modal -->
     <div id="referenceModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Reference Tables</h2>
-                <button onclick="hideReference()" style="font-size: 20px; padding: 4px 8px;">×</button>
+                <button onclick="hideReference()">×</button>
             </div>
             <div class="modal-body">
                 <table class="reference-table">
@@ -487,56 +508,4 @@
                             <th>Vul</th>
                             <th>IMPs</th>
                             <th>Score</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>20</td><td>0</td><td>0</td><td>&lt;20</td><td>0</td></tr>
-                        <tr><td>21</td><td>-50</td><td>-50</td><td>&lt;50</td><td>1</td></tr>
-                        <tr><td>22</td><td>-70</td><td>-70</td><td>&lt;90</td><td>2</td></tr>
-                        <tr><td>23</td><td>-110</td><td>-110</td><td>&lt;130</td><td>3</td></tr>
-                        <tr><td>24</td><td>-200</td><td>-290</td><td>&lt;170</td><td>4</td></tr>
-                        <tr><td>25</td><td>-300</td><td>-440</td><td>&lt;220</td><td>5</td></tr>
-                        <tr><td>26</td><td>-350</td><td>-520</td><td>&lt;270</td><td>6</td></tr>
-                        <tr><td>27+</td><td>etc.</td><td>etc.</td><td>etc.</td><td>etc.</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
- <script>
-        // Reference table functionality
-        window.showReference = function() {
-            document.getElementById('referenceModal').style.display = 'flex';
-        }
-
-        window.hideReference = function() {
-            document.getElementById('referenceModal').style.display = 'none';
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                hideReference();
-            }
-        }
-    </script>
-
-    <script src="/bridge-scorer/app.js"></script><div id="confirmationModal" class="modal">
-    <div class="modal-content" style="max-width: 400px;">
-        <div class="modal-header">
-            <h2>Confirm Score Entry</h2>
-            <button onclick="hideConfirmation()">×</button>
-        </div>
-        <div class="modal-body">
-            <div id="confirmationDetails" class="confirmation-details"></div>
-            <div class="confirmation-buttons">
-                <button onclick="confirmAndAddScore()" class="confirm-btn">Yes</button>
-                <button onclick="hideConfirmation()" class="edit-btn">Edit</button>
-                <button onclick="hideConfirmation()" class="cancel-btn">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
-</body>
-</html>
+                        </tr
