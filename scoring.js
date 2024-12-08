@@ -1,8 +1,8 @@
-function showConfirmation() {
-    // Get dealNumber from the deal info display or default to 1
-    const dealNumberDisplay = document.getElementById('dealInfo').textContent;
-    const dealNumber = parseInt(dealNumberDisplay.match(/\d+/)[0]) || 1;
+let dealNumber = 1;
+const tableBody = document.getElementById('scoresBody');
+let isEditing = false;
 
+function showConfirmation() {
     const bid = document.getElementById('bid').value;
     const suit = document.getElementById('suit').value;
     const by = document.getElementById('by').value;
@@ -11,10 +11,12 @@ function showConfirmation() {
     const isDoubled = document.getElementById('double').checked;
     const isRedoubled = document.getElementById('redouble').checked;
     
-    // Get vulnerability from display
-    const vulDisplay = document.getElementById('dealInfo').textContent;
-    const isVul = vulDisplay.includes('N/S') && (by === 'N' || by === 'S') || 
-                  vulDisplay.includes('E/W') && (by === 'E' || by === 'W');
+    // Get vulnerability from dealer and deal number
+    const dealNumberValue = document.getElementById('dealNumber').textContent;
+    const vulValue = document.getElementById('vulnerable').textContent;
+    const isVul = (vulValue.includes('N/S') && (by === 'N' || by === 'S')) || 
+                  (vulValue.includes('E/W') && (by === 'E' || by === 'W')) ||
+                  vulValue === 'All';
     
     const details = `
         <div style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
@@ -36,6 +38,9 @@ function hideConfirmation() {
 function confirmAndAddScore() {
     hideConfirmation();
     
+    // Store current deal number before adding score
+    const currentDeal = parseInt(document.getElementById('dealNumber').textContent);
+    
     const bid = document.getElementById('bid').value;
     const suit = document.getElementById('suit').value;
     const by = document.getElementById('by').value;
@@ -44,8 +49,10 @@ function confirmAndAddScore() {
     const isDoubled = document.getElementById('double').checked;
     const isRedoubled = document.getElementById('redouble').checked;
 
-    const vulInfo = getVulnerability(dealNumber);
-    const isVul = (by === 'N' || by === 'S') ? vulInfo.ns : vulInfo.ew;
+    const vulValue = document.getElementById('vulnerable').textContent;
+    const isVul = (vulValue.includes('N/S') && (by === 'N' || by === 'S')) || 
+                  (vulValue.includes('E/W') && (by === 'E' || by === 'W')) ||
+                  vulValue === 'All';
     
     const rawScore = calculateScore(bid, suit, made, isVul, isDoubled, isRedoubled);
     const comp = -getCompensation(hcp, isVul);
@@ -56,7 +63,7 @@ function confirmAndAddScore() {
     const ewImps = nsScore < 0 ? imps : 0;
 
     const row = tableBody.insertRow();
-    row.insertCell().textContent = dealNumber;
+    row.insertCell().textContent = currentDeal;
     
     let contractText = `${bid}${suit} by ${by}${isVul ? ' V' : ' NV'}`;
     if (isRedoubled) contractText += 'XX';
@@ -76,8 +83,7 @@ function confirmAndAddScore() {
     deleteButton.textContent = 'Delete';
     deleteButton.className = 'delete-btn';
     deleteButton.onclick = function() {
-        row.remove();
-        updateTotals();
+        deleteScore(row);
     };
     deleteCell.appendChild(deleteButton);
 
@@ -87,11 +93,34 @@ function confirmAndAddScore() {
     // Scroll to the new row
     row.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-    dealNumber++;
-    updateDealInfo();
+    // Only increment if not editing
+    if (!isEditing) {
+        updateDealInfo(currentDeal + 1);
+    }
+    isEditing = false;
     updateTotals();
 }
 
-// Add this to ensure we capture all necessary variables from the original app.js
-let dealNumber = 1;
-const tableBody = document.getElementById('scoresBody');
+function deleteScore(row) {
+    const index = row.rowIndex;
+    row.remove();
+    // Recalculate deal numbers
+    const rows = tableBody.getElementsByTagName('tr');
+    for (let i = 0; i < rows.length; i++) {
+        rows[i].cells[0].textContent = i + 1;
+    }
+    updateDealInfo(rows.length + 1);
+    updateTotals();
+}
+
+function updateDealInfo(newDealNumber) {
+    document.getElementById('dealNumber').textContent = newDealNumber;
+    const dealer = getDealer(newDealNumber);
+    document.getElementById('dealer').textContent = dealer;
+    const vulInfo = getVulnerability(newDealNumber);
+    let vulText = 'None';
+    if (vulInfo.ns && vulInfo.ew) vulText = 'All';
+    else if (vulInfo.ns) vulText = 'N/S';
+    else if (vulInfo.ew) vulText = 'E/W';
+    document.getElementById('vulnerable').textContent = vulText;
+}
