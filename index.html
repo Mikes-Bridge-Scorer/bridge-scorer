@@ -522,6 +522,21 @@
         }
     </script>
 
-    <script src="/bridge-scorer/app.js"></script>
+    <script src="/bridge-scorer/app.js"></script><div id="confirmationModal" class="modal">
+    <div class="modal-content" style="max-width: 400px;">
+        <div class="modal-header">
+            <h2>Confirm Score Entry</h2>
+            <button onclick="hideConfirmation()">×</button>
+        </div>
+        <div class="modal-body">
+            <div id="confirmationDetails" class="confirmation-details"></div>
+            <div class="confirmation-buttons">
+                <button onclick="confirmAndAddScore()" class="confirm-btn">Yes</button>
+                <button onclick="hideConfirmation()" class="edit-btn">Edit</button>
+                <button onclick="hideConfirmation()" class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
