@@ -1,3 +1,4 @@
+let dealNumber = 1;
 const tableBody = document.getElementById('scoresBody');
 let isEditing = false;
 
@@ -16,6 +17,25 @@ window.showReference = function() {
 
 window.hideReference = function() {
    document.getElementById('referenceModal').style.display = 'none';
+}
+
+function showTab(tabName) {
+   event.preventDefault();
+   
+   document.querySelectorAll('.tab-content').forEach(tab => {
+       tab.style.display = 'none';
+       tab.classList.remove('active');
+   });
+   document.querySelectorAll('.tab-btn').forEach(btn => {
+       btn.classList.remove('active');
+   });
+   
+   const selectedTab = document.getElementById(tabName + '-tab');
+   if (selectedTab) {
+       selectedTab.style.display = 'block';
+       selectedTab.classList.add('active');
+   }
+   event.target.classList.add('active');
 }
 
 function showConfirmation() {
@@ -108,6 +128,7 @@ function confirmAndAddScore() {
    isEditing = false;
    updateTotals();
 }
+
 function deleteScore(row) {
    const index = row.rowIndex;
    row.remove();
@@ -115,25 +136,7 @@ function deleteScore(row) {
    for (let i = 0; i < rows.length; i++) {
        rows[i].cells[0].textContent = i + 1;
    }
-   function showTab(tabName) {
-    event.preventDefault();
-    
-    document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.style.display = 'none';
-        tab.classList.remove('active');
-    });
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    const selectedTab = document.getElementById(tabName + '-tab');
-    if (selectedTab) {
-        selectedTab.style.display = 'block';
-        selectedTab.classList.add('active');
-    }
-    event.target.classList.add('active');
-}
-     dealNumber = rows.length + 1;
+   dealNumber = rows.length + 1;
    updateDealInfo();
    updateTotals();
 }
