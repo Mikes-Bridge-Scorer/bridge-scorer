@@ -1,6 +1,17 @@
 let dealNumber = 1;
 const tableBody = document.getElementById('scoresBody');
-let isEditing = false;
+let isEditing = false;document.addEventListener('DOMContentLoaded', function() {
+    // Reference button functionality
+    const referenceButton = document.getElementById('referenceButton');
+    if (referenceButton) {
+        referenceButton.addEventListener('click', function() {
+            const modal = document.getElementById('referenceModal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        });
+    }
+});
 window.showReference = function() {
     document.getElementById('referenceModal').style.display = 'flex';
 }
