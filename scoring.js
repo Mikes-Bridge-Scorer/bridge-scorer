@@ -108,7 +108,6 @@ function confirmAndAddScore() {
    isEditing = false;
    updateTotals();
 }
-
 function deleteScore(row) {
    const index = row.rowIndex;
    row.remove();
@@ -117,10 +116,8 @@ function deleteScore(row) {
        rows[i].cells[0].textContent = i + 1;
    }
    function showTab(tabName) {
-    // Prevent default button behavior
     event.preventDefault();
     
-    // Remove active class from all tabs and buttons
     document.querySelectorAll('.tab-content').forEach(tab => {
         tab.style.display = 'none';
         tab.classList.remove('active');
@@ -129,7 +126,6 @@ function deleteScore(row) {
         btn.classList.remove('active');
     });
     
-    // Show selected tab and activate button
     const selectedTab = document.getElementById(tabName + '-tab');
     if (selectedTab) {
         selectedTab.style.display = 'block';
@@ -137,7 +133,7 @@ function deleteScore(row) {
     }
     event.target.classList.add('active');
 }
-   dealNumber = rows.length + 1;
+     dealNumber = rows.length + 1;
    updateDealInfo();
    updateTotals();
 }
