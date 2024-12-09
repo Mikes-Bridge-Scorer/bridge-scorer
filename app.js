@@ -126,32 +126,33 @@ window.onload = function() {
     }
 
     function calculateImps(score) {
-        if (score < 20) return 0;
-        if (score < 50) return 1;
-        if (score < 90) return 2;
-        if (score < 130) return 3;
-        if (score < 170) return 4;
-        if (score < 220) return 5;
-        if (score < 270) return 6;
-        if (score < 320) return 7;
-        if (score < 370) return 8;
-        if (score < 430) return 9;
-        if (score < 500) return 10;
-        if (score < 600) return 11;
-        if (score < 750) return 12;
-        if (score < 900) return 13;
-        if (score < 1100) return 14;
-        if (score < 1300) return 15;
-        if (score < 1500) return 16;
-        if (score < 1750) return 17;
-        if (score < 2000) return 18;
-        if (score < 2250) return 19;
-        if (score < 2500) return 20;
-        if (score < 3000) return 21;
-        if (score < 3500) return 22;
-        if (score < 4000) return 23;
-        return 24;
-    }
+function calculateImps(score) {
+    if (score <= 20) return 0;
+    if (score <= 50) return 1;
+    if (score <= 90) return 2;
+    if (score <= 130) return 3;
+    if (score <= 170) return 4;
+    if (score <= 220) return 5;
+    if (score <= 270) return 6;
+    if (score <= 320) return 7;
+    if (score <= 370) return 8;
+    if (score <= 430) return 9;
+    if (score <= 500) return 10;
+    if (score <= 600) return 11;
+    if (score <= 750) return 12;
+    if (score <= 900) return 13;
+    if (score <= 1100) return 14;
+    if (score <= 1300) return 15;
+    if (score <= 1500) return 16;
+    if (score <= 1750) return 17;
+    if (score <= 2000) return 18;
+    if (score <= 2250) return 19;
+    if (score <= 2500) return 20;
+    if (score <= 3000) return 21;
+    if (score <= 3500) return 22;
+    if (score <= 4000) return 23;
+    return 24;
+}
 
     function getCompensation(hcp, isVul) {
         return COMPENSATION[isVul ? 'V' : 'NV'][hcp];
