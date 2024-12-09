@@ -1,6 +1,13 @@
 let dealNumber = 1;
 const tableBody = document.getElementById('scoresBody');
 let isEditing = false;
+window.showReference = function() {
+    document.getElementById('referenceModal').style.display = 'flex';
+}
+
+window.hideReference = function() {
+    document.getElementById('referenceModal').style.display = 'none';
+}
 
 function showConfirmation() {
     const bid = document.getElementById('bid').value;
