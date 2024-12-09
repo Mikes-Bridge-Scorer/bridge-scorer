@@ -1,6 +1,28 @@
 let dealNumber = 1;
 const tableBody = document.getElementById('scoresBody');
-let isEditing = false;document.addEventListener('DOMContentLoaded', function() {
+let isEditing = false;
+
+function updateDealInfo(newDealNumber) {
+    const dealNumberElement = document.getElementById('dealNumber');
+    const dealerElement = document.getElementById('dealer');
+    const vulnerableElement = document.getElementById('vulnerable');
+    
+    if (dealNumberElement) dealNumberElement.textContent = newDealNumber;
+    
+    // Calculate dealer
+    const dealer = getDealer(newDealNumber);
+    if (dealerElement) dealerElement.textContent = dealer;
+    
+    // Calculate vulnerability
+    const vulInfo = getVulnerability(newDealNumber);
+    let vulText = 'None';
+    if (vulInfo.ns && vulInfo.ew) vulText = 'All';
+    else if (vulInfo.ns) vulText = 'N/S';
+    else if (vulInfo.ew) vulText = 'E/W';
+    if (vulnerableElement) vulnerableElement.textContent = vulText;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
     // Reference button functionality
     const referenceButton = document.getElementById('referenceButton');
     if (referenceButton) {
@@ -12,6 +34,7 @@ let isEditing = false;document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 window.showReference = function() {
     document.getElementById('referenceModal').style.display = 'flex';
 }
@@ -129,16 +152,4 @@ function deleteScore(row) {
     }
     updateDealInfo(rows.length + 1);
     updateTotals();
-}
-
-function updateDealInfo(newDealNumber) {
-    document.getElementById('dealNumber').textContent = newDealNumber;
-    const dealer = getDealer(newDealNumber);
-    document.getElementById('dealer').textContent = dealer;
-    const vulInfo = getVulnerability(newDealNumber);
-    let vulText = 'None';
-    if (vulInfo.ns && vulInfo.ew) vulText = 'All';
-    else if (vulInfo.ns) vulText = 'N/S';
-    else if (vulInfo.ew) vulText = 'E/W';
-    document.getElementById('vulnerable').textContent = vulText;
 }
