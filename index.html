@@ -283,7 +283,33 @@
         .new-row-highlight {
             animation: highlightRow 2s ease-out;
         }
+.reference-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
 
+.tab-btn {
+    padding: 8px 16px;
+    border: none;
+    background: #e3f2fd;
+    color: #4285f4;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.tab-btn.active {
+    background: #4285f4;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
         @keyframes highlightRow {
             0% { background-color: #e3f2fd; }
             100% { background-color: transparent; }
