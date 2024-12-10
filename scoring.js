@@ -57,61 +57,31 @@ function showConfirmation() {
   console.log('showConfirmation completed');
 }
 
-const bid = document.getElementById('bid').value;
-const suit = document.getElementById('suit').value;
-const by = document.getElementById('by').value;
-const made = document.getElementById('made').value;
-const hcp = document.getElementById('hcp').value;
-const isDoubled = document.getElementById('double').checked;
-const isRedoubled = document.getElementById('redouble').checked;
-
-const vulValue = document.getElementById('vulnerable').textContent;
-const isVul = (vulValue.includes('N/S') && (by === 'N' || by === 'S')) || (vulValue.includes('E/W') && (by === 'E' || by === 'W'));
-vulValue === 'All';
-
-const details = `
-  <div style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
-    <strong>Contract:</strong> ${bid}${suit} by ${by} (${isVul ? 'Vul' : 'Not Vul'})
-  </div>
-  <div><strong>Made:</strong> ${made} tricks</div>
-  <div><strong>HCP:</strong> ${hcp}</div>
-  <div><strong>Double/Redouble:</strong> ${isDoubled ? 'Doubled' : (isRedoubled ? 'Redoubled' : '')}</div>
-`;
-
-document.getElementById('confirmationDetails').innerHTML = details;
-document.getElementById('confirmationModal').style.display = 'flex';
-}
-
-<userStyle>Normal</userStyle>
-}
-
-function hideConfirmation() {
-   document.getElementById('confirmationModal').style.display = 'none';
-}
-
 function confirmAndAddScore() {
-   hideConfirmation();
-   
-   const bid = document.getElementById('bid').value;
-   const suit = document.getElementById('suit').value;
-   const by = document.getElementById('by').value;
-   const made = document.getElementById('made').value;
-   const hcp = parseInt(document.getElementById('hcp').value);
-   const isDoubled = document.getElementById('double').checked;
-   const isRedoubled = document.getElementById('redouble').checked;
+  hideConfirmation();
 
-   const vulValue = document.getElementById('vulnerable').textContent;
-   const isVul = (vulValue.includes('N/S') && (by === 'N' || by === 'S')) || 
-                 (vulValue.includes('E/W') && (by === 'E' || by === 'W')) ||
-                 vulValue === 'All';
-   
-   const rawScore = calculateScore(bid, suit, made, isVul, isDoubled, isRedoubled);
-   const comp = -getCompensation(hcp, isVul);
-   const netScore = rawScore + comp;
-   const nsScore = (by === 'N' || by === 'S') ? netScore : -netScore;
-   const imps = calculateImps(Math.abs(netScore));
-   const nsImps = nsScore > 0 ? imps : 0;
-   const ewImps = nsScore < 0 ? imps : 0;
+  const bid = document.getElementById('bid').value;
+  const suit = document.getElementById('suit').value;
+  const by = document.getElementById('by').value;
+  const made = document.getElementById('made').value;
+  const hcp = parseInt(document.getElementById('hcp').value);
+  const isDoubled = document.getElementById('double').checked;
+  const isRedoubled = document.getElementById('redouble').checked;
+
+  const vulValue = document.getElementById('vulnerable').textContent;
+  const isVul = (vulValue.includes('N/S') && (by === 'N' || by === 'S')) || (vulValue.includes('E/W') && (by === 'E' || by === 'W'));
+  vulValue === 'All';
+
+  const rawScore = calculateScore(bid, suit, made, isVul, isDoubled, isRedoubled);
+  const comp = -getCompensation(hcp, isVul);
+  const netScore = rawScore + comp;
+  const nsScore = (by === 'N' || by === 'S') ? netScore : -netScore;
+  const imps = calculateImps(Math.abs(netScore));
+  const nsImps = nsScore > 0 ? imps : 0;
+  const ewImps = nsScore < 0 ? imps : 0;
+
+  // Add the new row to the table
+}
 
    const row = tableBody.insertRow();
    row.insertCell().textContent = dealNumber;
