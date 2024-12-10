@@ -235,14 +235,15 @@ updateTotals();
 updateDealInfo();  // no closing bracket
 updateTotals();
 
-}); // Close window.onload
+dealNumber++;
+updateDealInfo();
+updateTotals();
+
+}; // Close window.onload
 
 // Initial setup
 updateDealInfo();
 updateTotals();
-
-}); // Close window.onload
-
 // Initial setup
 updateDealInfo();
 updateTotals();
