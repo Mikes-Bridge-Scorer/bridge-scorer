@@ -222,14 +222,39 @@ function calculateImps(score) {
         row.insertCell().textContent = comp;
         row.insertCell().textContent = netScore;
         row.insertCell().textContent = nsImps;
-        row.insertCell().textContent = ewImps;
-        addDeleteButton(row);
+    row.insertCell().textContent = ewImps;
+addDeleteButton(row);
 
-        dealNumber++;
-        updateDealInfo();
+dealNumber++;
+updateDealInfo();
+updateTotals();
+
+}; // Close window.onload
+
+// Initial setup
+updateDealInfo();  // no closing bracket
+updateTotals();
+
+}); // Close window.onload
+
+// Initial setup
+updateDealInfo();
+updateTotals();
+
+}); // Close window.onload
+
+// Initial setup
+updateDealInfo();
+updateTotals();
+
+}); // Close window.onload
+
+// Initial setup
+updateDealInfo();
         updateTotals();
     });
 
     // Initial setup
     updateDealInfo();
 };
+    }); // Close window.onload
