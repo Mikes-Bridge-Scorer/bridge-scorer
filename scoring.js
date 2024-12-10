@@ -40,10 +40,12 @@ function showTab(tabName) {
 
 function showConfirmation() {
   console.log('showConfirmation called');
-  }
-   
+
   const confirmationDetailsElement = document.getElementById('confirmationDetails');
   const confirmationModalElement = document.getElementById('confirmationModal');
+  
+  console.log('confirmationDetailsElement:', confirmationDetailsElement);
+  console.log('confirmationModalElement:', confirmationModalElement);
 
   if (confirmationDetailsElement && confirmationModalElement) {
     confirmationDetailsElement.innerHTML = details;
