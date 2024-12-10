@@ -1,5 +1,3 @@
-Sure, here's the complete code with the changes to address the `DOUBLE_PENALTIES` variable issue:
-
 ```javascript
 window.onload = function() {
     const tableBody = document.getElementById('scoresBody');
