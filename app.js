@@ -193,22 +193,26 @@ window.onload = function() {
         let contractText = `${bid}${suit} by ${by}${isVul ? ' V' : ' NV'}`;
         if (isRedoubled) contractText += 'XX';
         else if (isDoubled) contractText += 'X';
-        row.insertCell().textContent = contractText;
+    row.insertCell().textContent = contractText;
         
-        row.insertCell().textContent = made;
-        row.insertCell().textContent = rawScore;
-        row.insertCell().textContent = hcp;
-        row.insertCell().textContent = comp;
-        row.insertCell().textContent = netScore;
-        row.insertCell().textContent = nsImps;
-        row.insertCell().textContent = ewImps;
-        
-        addDeleteButton(row);
+row.insertCell().textContent = made;
+row.insertCell().textContent = rawScore;
+row.insertCell().textContent = hcp;
+row.insertCell().textContent = comp;
+row.insertCell().textContent = netScore;
+row.insertCell().textContent = nsImps;
+row.insertCell().textContent = ewImps;
 
-        dealNumber++;
-        updateDealInfo();
-        updateTotals();
-    });
+addDeleteButton(row);
+
+dealNumber++;
+updateDealInfo();
+updateTotals();
+};
+
+// Initial setup
+updateDealInfo();
+};
 
     // Initial setup
     updateDealInfo();
