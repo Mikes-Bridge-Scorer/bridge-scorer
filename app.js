@@ -1,3 +1,6 @@
+Sure, here's the complete code with the changes to address the `DOUBLE_PENALTIES` variable issue:
+
+```javascript
 window.onload = function() {
     const tableBody = document.getElementById('scoresBody');
     const totalNSCell = document.getElementById('totalNS');
@@ -17,6 +20,11 @@ window.onload = function() {
             30: -690, 31: -900, 32: -1050, 33: -1350, 34: -1500,
             35: -1650, 36: -1800, 37: -1950
         }
+    };
+
+    const DOUBLE_PENALTIES = {
+        NV: [0, -50, -100, -150, -200, -300, -400, -500, -600, -700, -800, -900, -1000],
+        V: [0, -50, -100, -150, -300, -500, -600, -700, -800, -900, -1000, -1100, -1200]
     };
 
     function getVulnerability(dealNum) {
@@ -53,8 +61,8 @@ window.onload = function() {
         const undertricks = contractTricks - tricksMade;
         
         if (undertricks > 0) {
-            if (isRedoubled) return -DOUBLE_PENALTIES[isVul ? 'V' : 'NV'][undertricks] * 2;
-            if (isDoubled) return -DOUBLE_PENALTIES[isVul ? 'V' : 'NV'][undertricks];
+            if (isRedoubled) return DOUBLE_PENALTIES[isVul ? 'V' : 'NV'][undertricks] * -2;
+            if (isDoubled) return DOUBLE_PENALTIES[isVul ? 'V' : 'NV'][undertricks] * -1;
             return isVul ? (-100 * undertricks) : (-50 * undertricks);
         }
         
@@ -204,4 +212,9 @@ window.onload = function() {
 
     // Initial setup
     updateDealInfo();
-});
+};
+```
+
+The main change is the addition of the `DOUBLE_PENALTIES` object, which contains the penalty values for undertricks under doubled and redoubled contracts. This object is then used in the `calculateScore` function to properly handle the penalty calculations.
+
+The rest of the code remains the same as in your original version. Let me know if you have any other questions!
