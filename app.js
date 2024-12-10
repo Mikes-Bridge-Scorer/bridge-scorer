@@ -1,6 +1,3 @@
-Sure, here's the complete code with the JavaScript wrapped in a `<script>` tag:
-
-```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -246,8 +243,3 @@ Sure, here's the complete code with the JavaScript wrapped in a `<script>` tag:
   </script>
 </body>
 </html>
-```
-
-This code has the JavaScript wrapped in a `<script>` tag, which should resolve the "Uncaught SyntaxError: Unexpected token '<'" issue you were encountering.
-
-The rest of the code remains the same as in the previous version. Let me know if you have any other questions!
