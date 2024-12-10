@@ -62,23 +62,22 @@ const made = document.getElementById('made').value;
 const hcp = document.getElementById('hcp').value;
 const isDoubled = document.getElementById('double').checked;
 const isRedoubled = document.getElementById('redouble').checked;
-   
-   const vulValue = document.getElementById('vulnerable').textContent;
-   const isVul = (vulValue.includes('N/S') && (by === 'N' || by === 'S')) || 
-                 (vulValue.includes('E/W') && (by === 'E' || by === 'W')) ||
-                 vulValue === 'All';
-   
-   const details = `
-       <div style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
-           <div><strong>Contract:</strong> ${bid}${suit} by ${by} (${isVul ? 'Vul' : 'Not Vul'})</div>
-           <div><strong>Made:</strong> ${made} tricks</div>
-           <div><strong>HCP:</strong> ${hcp}</div>
-           <div><strong>Double/Redouble:</strong> ${isDoubled ? 'Doubled' : (isRedoubled ? 'Redoubled' : 'No')}</div>
-       </div>
-   `;
-   
-   document.getElementById('confirmationDetails').innerHTML = details;
-   document.getElementById('confirmationModal').style.display = 'flex';
+
+const vulValue = document.getElementById('vulnerable').textContent;
+const isVul = (vulValue.includes('N/S') && (by === 'N' || by === 'S')) || (vulValue.includes('E/W') && (by === 'E' || by === 'W'));
+vulValue === 'All';
+
+const details = `
+  <div style="font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+    <strong>Contract:</strong> ${bid}${suit} by ${by} (${isVul ? 'Vul' : 'Not Vul'})
+  </div>
+  <div><strong>Made:</strong> ${made} tricks</div>
+  <div><strong>HCP:</strong> ${hcp}</div>
+  <div><strong>Double/Redouble:</strong> ${isDoubled ? 'Doubled' : (isRedoubled ? 'Redoubled' : '')}</div>
+`;
+
+document.getElementById('confirmationDetails').innerHTML = details;
+document.getElementById('confirmationModal').style.display = 'flex';
 }
 
 function hideConfirmation() {
