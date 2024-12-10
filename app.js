@@ -1,11 +1,15 @@
-```javascript
-window.onload = function() {
+<script>
+  window.onload = function() {
     const tableBody = document.getElementById('scoresBody');
     const totalNSCell = document.getElementById('totalNS');
     const totalEWCell = document.getElementById('totalEW');
     let dealNumber = 1;
 
     const COMPENSATION = {
+      // Rest of the code
+    };
+  };
+</script>
         NV: {
             20: 0, 21: -50, 22: -70, 23: -110, 24: -200,
             25: -300, 26: -350, 27: -400, 28: -430, 29: -460,
