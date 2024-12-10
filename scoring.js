@@ -54,13 +54,14 @@ function showConfirmation() {
     console.error('Required elements not found in the DOM.');
   }
 }
-   const bid = document.getElementById('bid').value;
-   const suit = document.getElementById('suit').value;
-   const by = document.getElementById('by').value;
-   const made = document.getElementById('made').value;
-   const hcp = document.getElementById('hcp').value;
-   const isDoubled = document.getElementById('double').checked;
-   const isRedoubled = document.getElementById('redouble').checked;
+
+const bid = document.getElementById('bid').value;
+const suit = document.getElementById('suit').value;
+const by = document.getElementById('by').value;
+const made = document.getElementById('made').value;
+const hcp = document.getElementById('hcp').value;
+const isDoubled = document.getElementById('double').checked;
+const isRedoubled = document.getElementById('redouble').checked;
    
    const vulValue = document.getElementById('vulnerable').textContent;
    const isVul = (vulValue.includes('N/S') && (by === 'N' || by === 'S')) || 
