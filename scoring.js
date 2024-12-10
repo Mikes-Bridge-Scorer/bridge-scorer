@@ -39,6 +39,9 @@ function showTab(tabName) {
 }
 
 function showConfirmation() {
+  console.log('showConfirmation called');
+  }
+   
   const confirmationDetailsElement = document.getElementById('confirmationDetails');
   const confirmationModalElement = document.getElementById('confirmationModal');
 
