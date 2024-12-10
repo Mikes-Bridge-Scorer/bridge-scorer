@@ -80,6 +80,7 @@ const details = `
 
 document.getElementById('confirmationDetails').innerHTML = details;
 document.getElementById('confirmationModal').style.display = 'flex';
+}
 
 <userStyle>Normal</userStyle>
 }
