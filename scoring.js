@@ -53,6 +53,8 @@ function showConfirmation() {
   } else {
     console.error('Required elements not found in the DOM.');
   }
+
+  console.log('showConfirmation completed');
 }
 
 const bid = document.getElementById('bid').value;
