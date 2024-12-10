@@ -39,6 +39,16 @@ function showTab(tabName) {
 }
 
 function showConfirmation() {
+  const confirmationDetailsElement = document.getElementById('confirmationDetails');
+  const confirmationModalElement = document.getElementById('confirmationModal');
+
+  if (confirmationDetailsElement && confirmationModalElement) {
+    confirmationDetailsElement.innerHTML = details;
+    confirmationModalElement.style.display = 'flex';
+  } else {
+    console.error('Required elements not found in the DOM.');
+  }
+}
    const bid = document.getElementById('bid').value;
    const suit = document.getElementById('suit').value;
    const by = document.getElementById('by').value;
