@@ -31,19 +31,19 @@
 
     function getVulnerability(dealNum) {
         switch ((dealNum - 1) % 4) {
-            case 0: return { ns: false, ew: false, str: "None" };
-            case 1: return { ns: true, ew: false, str: "N/S" };
-            case 2: return { ns: false, ew: true, str: "E/W" };
-            case 3: return { ns: true, ew: true, str: "All" };
+            case 0: return { ns: false, ew: false, str: "None" }
+            case 1: return { ns: true, ew: false, str: "N/S" }
+            case 2: return { ns: false, ew: true, str: "E/W" }
+            case 3: return { ns: true, ew: true, str: "All" }
         }
     }
 
     function getDealer(dealNum) {
         switch ((dealNum - 1) % 4) {
-            case 0: return "N";
-            case 1: return "E";
-            case 2: return "S";
-            case 3: return "W";
+            case 0: return "N"
+            case 1: return "E"
+            case 2: return "S"
+            case 3: return "W"
         }
     }
 
