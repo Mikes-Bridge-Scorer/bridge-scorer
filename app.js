@@ -224,38 +224,8 @@ function calculateImps(score) {
         row.insertCell().textContent = nsImps;
     row.insertCell().textContent = ewImps;
 addDeleteButton(row);
-
 dealNumber++;
-updateDealInfo();
-updateTotals();
-
-}; // Close window.onload
-
-// Initial setup
-updateDealInfo();  // no closing bracket
-updateTotals();
-
-dealNumber++;
-updateDealInfo();
-updateTotals();
-
-}; // Close window.onload
-
-// Initial setup
-updateDealInfo();
-updateTotals();
-// Initial setup
 updateDealInfo();
 updateTotals();
 
 }); // Close window.onload
-
-// Initial setup
-updateDealInfo();
-        updateTotals();
-    });
-
-    // Initial setup
-    updateDealInfo();
-};
-    }); // Close window.onload
