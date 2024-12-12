@@ -57,30 +57,7 @@ function showConfirmation() {
   console.log('showConfirmation completed');
 }
 
-function confirmAndAddScore() {
-  hideConfirmation();
-
-  const bid = document.getElementById('bid').value;
-  const suit = document.getElementById('suit').value;
-  const by = document.getElementById('by').value;
-  const made = document.getElementById('made').value;
-  const hcp = parseInt(document.getElementById('hcp').value);
-  const isDoubled = document.getElementById('double').checked;
-  const isRedoubled = document.getElementById('redouble').checked;
-
-  const vulValue = document.getElementById('vulnerable').textContent;
-  const isVul = (vulValue.includes('N/S') && (by === 'N' || by === 'S')) || (vulValue.includes('E/W') && (by === 'E' || by === 'W'));
-  vulValue === 'All';
-
-  const rawScore = calculateScore(bid, suit, made, isVul, isDoubled, isRedoubled);
-  const comp = -getCompensation(hcp, isVul);
-  const netScore = rawScore + comp;
-  const nsScore = (by === 'N' || by === 'S') ? netScore : -netScore;
-  const imps = calculateImps(Math.abs(netScore));
-  const nsImps = nsScore > 0 ? imps : 0;
-  const ewImps = nsScore < 0 ? imps : 0;
-
-  // Add the new row to the table
+<userStyle>Normal</userStyle>
 }
 
    const row = tableBody.insertRow();
